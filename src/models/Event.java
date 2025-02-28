@@ -1,24 +1,21 @@
 package models;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Event {
     private String name;
     private String date;
     private String venue;
+    private int initialTickets; // จำนวนตั๋วตอนแรก
     private int ticketsAvailable;
     private double price;
-    private List<Ticket> bookedTickets;
 
     // Constructor
     public Event(String name, String date, String venue, int ticketsAvailable, double price) {
         this.name = name;
         this.date = date;
         this.venue = venue;
+        this.initialTickets = ticketsAvailable; // เก็บจำนวนตั๋วตอนแรก
         this.ticketsAvailable = ticketsAvailable;
         this.price = price;
-        this.bookedTickets = new ArrayList<>();
     }
 
     // Getters & Setters
@@ -46,6 +43,10 @@ public class Event {
         this.venue = venue;
     }
 
+    public int getInitialTickets() { // Getter สำหรับจำนวนตั๋วตอนแรก
+        return initialTickets;
+    }
+
     public int getTicketsAvailable() {
         return ticketsAvailable;
     }
@@ -62,13 +63,7 @@ public class Event {
         this.price = price;
     }
 
-    public List<Ticket> getBookedTickets() {
-        return bookedTickets;
-    }
-
-    // Add booked ticket
     public void addBookedTicket(Ticket ticket) {
-        bookedTickets.add(ticket);
-        ticketsAvailable--; // Decrease available tickets by 1
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

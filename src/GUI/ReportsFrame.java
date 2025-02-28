@@ -12,6 +12,7 @@ import models.EventManager;
 import models.Ticket;
 import models.User;
 
+
 public class ReportsFrame extends JFrame {
     private final JTable reportTable;
     private final DefaultTableModel reportTableModel;
