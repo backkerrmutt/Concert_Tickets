@@ -20,7 +20,7 @@ public class LoginFrame extends JFrame {
 
     static {
         users.put("admin", new Admin("admin", "admin", "Admin", "User", 35, "Male"));
-        users.put("1", new Customer("1", "1", "1", "1", 1, "male", 1000));
+        // users.put("A", new Customer("aaaa", "aaaa", "A", "A", 30, "Male", 100));
     }
 
     public LoginFrame() {

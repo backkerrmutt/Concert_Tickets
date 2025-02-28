@@ -32,7 +32,7 @@ public class CustomerDashboard extends JFrame {
         centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
 
         // Balance display
-        balanceLabel = new JLabel("Balance: " + customer.getBalance() + " USD", JLabel.CENTER);
+        this.balanceLabel = new JLabel(String.format("Balance: %.2f USD", customer.getBalance()), JLabel.CENTER);
         centerPanel.add(balanceLabel);
 
         // Event selection dropdown
