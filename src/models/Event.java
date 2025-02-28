@@ -1,15 +1,11 @@
 package models;
 
-import java.text.NumberFormat;
-import java.util.Locale;
-
 public class Event {
-    private String event; // ประกาศตัวแปร event
     private String name;
     private String date;
     private String venue;
     private int ticketsAvailable;
-    private double price; // เพิ่มตัวแปร price
+    private double price;
 
     // Constructor
     public Event(String name, String date, String venue, int ticketsAvailable, double price) {
@@ -17,16 +13,12 @@ public class Event {
         this.date = date;
         this.venue = venue;
         this.ticketsAvailable = ticketsAvailable;
-        this.price = price; // กำหนดราคา
+        this.price = price;
     }
 
-    // เมธอดเพื่อดึงราคาตั๋ว
-    public String getTicketPrice() {
-        NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(Locale.US); // แปลงให้เป็นรูปแบบสกุลเงิน
-        return currencyFormat.format(price); // คืนค่าราคาในรูปแบบสกุลเงิน
-    }
+    
 
-    // Getter และ Setter สำหรับคลาส
+    // Getters & Setters
     public String getName() {
         return name;
     }

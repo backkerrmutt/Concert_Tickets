@@ -19,11 +19,11 @@ public class LoginFrame extends JFrame {
     private final JTextField usernameField;
     private final JPasswordField passwordField;
     private final JButton loginButton, registerButton;
-    static final Map<String, User> users = new HashMap<>();
-    List<Event> eventList = new ArrayList<>();
+    static public  Map<String, User> users = new HashMap<>();
 
     static {
         users.put("admin", new Admin("admin", "admin", "Admin", "User", 35, "Male"));
+        users.put("1", new Customer("1", "1", "1", "1", 1, "male", 1000));
     }
 
     public LoginFrame() {
@@ -78,7 +78,7 @@ public class LoginFrame extends JFrame {
                 } else if (user instanceof Customer) {
                     // สร้างรายการอีเวนต์จำลอง
                     List<Event> eventList = new ArrayList<>();
-                    new CustomerDashboard((Customer) user, eventList); // ส่ง Customer และ event list
+                    new CustomerDashboard((Customer) user); // ส่ง Customer และ event list
                 }
                 dispose(); // ปิดหน้าต่าง login หลังจากเปิดหน้าต่างใหม่
             });

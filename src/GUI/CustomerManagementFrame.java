@@ -1,4 +1,3 @@
-
 package GUI;
 
 import java.awt.BorderLayout;
@@ -7,11 +6,8 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import models.Customer;
 import models.User;
-/**
- * Customer Management Frame
- * @author Anuphong_PC
- */
-class CustomerManagementFrame extends JFrame {
+
+public class CustomerManagementFrame extends JFrame {
     private final JTable customerTable;
     private final JButton addCustomerButton, editCustomerButton, deleteCustomerButton;
     private final DefaultTableModel customerTableModel;
@@ -45,7 +41,18 @@ class CustomerManagementFrame extends JFrame {
         loadCustomers();
 
         // Action Listeners
-        addCustomerButton.addActionListener(e -> new RegisterFrame()); // Open register customer frame
+        addCustomerButton.addActionListener(e -> {
+            RegisterFrame registerFrame = new RegisterFrame();
+            registerFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            registerFrame.setVisible(true);
+            registerFrame.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosed(java.awt.event.WindowEvent e) {
+                    loadCustomers(); // Refresh table after adding a new customer
+                }
+            });
+        });
+
         editCustomerButton.addActionListener(e -> editCustomer());
         deleteCustomerButton.addActionListener(e -> deleteCustomer());
     }
@@ -53,14 +60,16 @@ class CustomerManagementFrame extends JFrame {
     private void loadCustomers() {
         customerTableModel.setRowCount(0); // Clear table
         for (Entry<String, User> entry : LoginFrame.users.entrySet()) {
-            Customer customer = (Customer) entry.getValue();
-            customerTableModel.addRow(new Object[]{
-                customer.getUsername(),
-                customer.getName(),
-                customer.getAge(),
-                customer.getGender(),
-                customer.getBalance()
-            });
+            if (entry.getValue() instanceof Customer) {
+                Customer customer = (Customer) entry.getValue();
+                customerTableModel.addRow(new Object[]{
+                    customer.getUsername(),
+                    customer.getName(),
+                    customer.getAge(),
+                    customer.getGender(),
+                    customer.getBalance()
+                });
+            }
         }
     }
 
@@ -68,7 +77,16 @@ class CustomerManagementFrame extends JFrame {
         int selectedRow = customerTable.getSelectedRow();
         if (selectedRow != -1) {
             String username = (String) customerTable.getValueAt(selectedRow, 0);
-            JOptionPane.showMessageDialog(this, "Editing customer: " + username);
+            Customer customer = (Customer) LoginFrame.users.get(username);
+            EditCustomerFrame editFrame = new EditCustomerFrame(customer);
+            editFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            editFrame.setVisible(true);
+            editFrame.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosed(java.awt.event.WindowEvent e) {
+                    loadCustomers(); // Refresh table after editing a customer
+                }
+            });
         } else {
             JOptionPane.showMessageDialog(this, "Please select a customer to edit!");
         }

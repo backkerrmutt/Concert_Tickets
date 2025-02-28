@@ -11,8 +11,8 @@ import models.Ticket;
 import models.User;
 
 public class ReportsFrame extends JFrame {
-    private JTable reportTable = null;
-    private DefaultTableModel reportTableModel = null;
+    private JTable reportTable ;
+    private DefaultTableModel reportTableModel ;
     Map<String, User> users;
 
     public ReportsFrame() {
