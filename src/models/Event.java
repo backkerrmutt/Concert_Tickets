@@ -1,11 +1,15 @@
 package models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Event {
     private String name;
     private String date;
     private String venue;
     private int ticketsAvailable;
     private double price;
+    private List<Ticket> bookedTickets;
 
     // Constructor
     public Event(String name, String date, String venue, int ticketsAvailable, double price) {
@@ -14,9 +18,8 @@ public class Event {
         this.venue = venue;
         this.ticketsAvailable = ticketsAvailable;
         this.price = price;
+        this.bookedTickets = new ArrayList<>();
     }
-
-    
 
     // Getters & Setters
     public String getName() {
@@ -57,5 +60,15 @@ public class Event {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public List<Ticket> getBookedTickets() {
+        return bookedTickets;
+    }
+
+    // Add booked ticket
+    public void addBookedTicket(Ticket ticket) {
+        bookedTickets.add(ticket);
+        ticketsAvailable--; // Decrease available tickets by 1
     }
 }

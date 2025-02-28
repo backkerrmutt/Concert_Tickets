@@ -3,26 +3,19 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-/**
- *
- * @author Anuphong_PC
- */
 public class Customer extends User {
     private final ArrayList<Ticket> bookedTickets = new ArrayList<>();
-    private  double  balance;
+    private double balance;
 
- 
-
-    
-    public Customer(String username, String password, String name, String lastname, int age, String gender,
-    int balance) {
+    public Customer(String username, String password, String name, String lastname, int age, String gender, double balance) {
         super(username, password, name, lastname, age, gender);
         this.balance = balance;
+    }
+
+
+    // Add booked ticket
+    public void addBookedTicket(Ticket ticket) {
+        bookedTickets.add(ticket);
     }
 
     public List<Ticket> getBookedTickets() {
@@ -34,7 +27,6 @@ public class Customer extends User {
         this.bookedTickets.addAll(bookedTickets);
     }
 
-    
     public double getBalance() {
         return balance;
     }
@@ -42,6 +34,4 @@ public class Customer extends User {
     public void setBalance(double balance) {
         this.balance = balance;
     }
-
-
 }

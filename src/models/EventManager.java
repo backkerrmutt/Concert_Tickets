@@ -1,5 +1,5 @@
-
 package models;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,8 +32,8 @@ public class EventManager {
         }
     }
 
-     // เพิ่มฟังก์ชัน updateEvent
-     public void updateEvent(int index, Event updatedEvent) {
+    // เพิ่มฟังก์ชัน updateEvent
+    public void updateEvent(int index, Event updatedEvent) {
         if (index >= 0 && index < eventsList.size()) {
             eventsList.set(index, updatedEvent);
         }

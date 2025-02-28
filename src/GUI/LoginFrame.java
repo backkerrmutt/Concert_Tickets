@@ -1,14 +1,11 @@
 package GUI;
 
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import javax.swing.*;
 import models.Admin;
 import models.Customer;
-import models.Event; //
 import models.User;
 /**
  *
@@ -77,7 +74,7 @@ public class LoginFrame extends JFrame {
                     new AdminDashboard();
                 } else if (user instanceof Customer) {
                     // สร้างรายการอีเวนต์จำลอง
-                    List<Event> eventList = new ArrayList<>();
+                    // List<Event> eventList = new ArrayList<>();
                     new CustomerDashboard((Customer) user); // ส่ง Customer และ event list
                 }
                 dispose(); // ปิดหน้าต่าง login หลังจากเปิดหน้าต่างใหม่

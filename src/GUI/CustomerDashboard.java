@@ -1,4 +1,5 @@
 package GUI;
+
 import java.awt.BorderLayout;
 import java.util.List;
 import javax.swing.*;
@@ -8,10 +9,10 @@ import models.EventManager;
 import models.Ticket;
 
 public class CustomerDashboard extends JFrame {
-    private Customer customer;
-    private JLabel balanceLabel;
-    private JComboBox<String> eventComboBox;
-    private JButton bookTicketButton;
+    private final Customer customer;
+    private final JLabel balanceLabel;
+    private final JComboBox<String> eventComboBox;
+    private final JButton bookTicketButton;
 
     // เพิ่ม constructor ที่รับ Customer
     public CustomerDashboard(Customer customer) {
@@ -84,6 +85,9 @@ public class CustomerDashboard extends JFrame {
 
                 // Save booking
                 Ticket ticket = new Ticket(customer, selectedEvent);
+                customer.addBookedTicket(ticket); // Add ticket to customer's booked tickets
+                selectedEvent.addBookedTicket(ticket); // Add ticket to event's booked tickets
+
                 JOptionPane.showMessageDialog(this, "Ticket booked successfully for " + selectedEvent.getName());
             } else {
                 JOptionPane.showMessageDialog(this, "Insufficient balance!", "Error", JOptionPane.ERROR_MESSAGE);

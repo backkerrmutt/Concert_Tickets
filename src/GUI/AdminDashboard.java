@@ -3,11 +3,6 @@ package GUI;
 import java.awt.GridLayout;
 import javax.swing.*;
 
-
-/**
- *
- * @author Anuphong_PC
- */
 class AdminDashboard extends JFrame {
     /**
      * 
